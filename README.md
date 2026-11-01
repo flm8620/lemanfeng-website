@@ -5,7 +5,9 @@ Public source repository for the personal site formerly hosted on WordPress at l
 ## Maintenance
 
 - Edit `content/pages.json` for restored project descriptions.
-- Edit `scripts/build.py` for the homepage, About page and shared HTML.
+- Edit `scripts/build.py` for the homepage and shared HTML.
+- Edit `content/cv.html` for the photo-free web CV; keep its professional content aligned with the CV source. Replace `dist/CV_Leman_FENG_2026_CN.pdf` when the compiled PDF changes.
+- Edit `dist/slideshow.js` for the ray-tracing slideshow.
 - Edit `dist/style.css` for styling; `dist/assets/` preserves the original project images and animated GIFs.
 - Run `python3 scripts/build.py` to generate the static pages.
 - Serve `dist/` locally or on any static host. No PHP, database, npm dependencies or credentials are required.
@@ -18,6 +20,6 @@ The earlier Sites deployment remains available during migration. `.openai/hostin
 
 ## Migration
 
-Source: UpdraftPlus backup dated 2021-07-05 in the owner's Google Drive. The published project pages and all 47 referenced images/GIFs were preserved. Legacy `/index.php/<slug>/` paths redirect to their static equivalents. The old Resume Builder plugin pages now lead to the current professional About page; the complete private CV has not been published. Original WordPress drafts, revisions, user records, password hashes, SQL backups and server configuration are excluded.
+Source: UpdraftPlus backup dated 2021-07-05 in the owner's Google Drive. The published project pages and all 47 referenced images/GIFs were preserved, with full-resolution Day 1 and Day 2 images added for the slideshow. Legacy `/index.php/<slug>/` paths redirect to their static equivalents. The homepage shows all projects inline. The old Resume Builder plugin pages now lead to the photo-free web CV, and a compiled PDF download is also published at the owner’s request. Original WordPress drafts, revisions, user records, password hashes, SQL backups and server configuration are excluded.
 
 `lemanfeng.com` DNS has not yet been switched. Custom-domain configuration is a separate step after the public site is verified.

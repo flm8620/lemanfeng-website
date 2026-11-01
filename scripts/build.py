@@ -2,9 +2,9 @@ from pathlib import Path
 import json,re,html
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'dist';OUT.mkdir(exist_ok=True)
 pages=json.loads((ROOT/'content/pages.json').read_text())
-nav='<a class="brand" href="/">Leman FENG<span>冯乐满</span></a><nav aria-label="主导航"><a href="/#work">作品 / Work</a><a href="/visualization/">动图 / Visuals</a><a href="/about/">关于 / About</a><a href="https://github.com/flm8620">GitHub ↗</a></nav>'
+nav='<a class="brand" href="/">Leman FENG<span>冯乐满</span></a><nav aria-label="主导航"><a href="/#cv">个人 CV</a><a href="/#work">作品 / Work</a><a href="/#visualization">动图 / Visuals</a><a href="https://github.com/flm8620">GitHub ↗</a></nav>'
 def shell(title,body,desc='Leman FENG — embodied intelligence, computer graphics, simulation and selected projects.'):
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · Leman FENG</title><meta name="description" content="{html.escape(desc)}"><meta name="theme-color" content="#f5f5ed"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"></head><body><a class="skip" href="#main">跳至内容</a><header>{nav}</header><main id="main">{body}</main><footer><span>© Leman FENG</span><span>Ideas made visible. 想法，化为可见。</span><a href="https://github.com/flm8620">GitHub ↗</a></footer></body></html>'''
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · Leman FENG</title><meta name="description" content="{html.escape(desc)}"><meta name="theme-color" content="#f5f5ed"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><script src="/slideshow.js" defer></script></head><body><a class="skip" href="#main">跳至内容</a><header>{nav}</header><main id="main">{body}</main><footer><span>© Leman FENG</span><span>Ideas made visible. 想法，化为可见。</span><a href="https://github.com/flm8620">GitHub ↗</a></footer></body></html>'''
 def write(route,text):
  p=OUT/route/'index.html';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 projects=[
@@ -38,7 +38,7 @@ write('about',shell('关于我',about))
 for slug in ('resume','chinese_resume'):
  write(slug,shell('关于我',about))
 for slug in ('home','works','projects'):
- write(slug,shell('作品集',body if False else '<div class="article-heading"><p class="eyebrow">WORK & EXPERIMENTS</p><h1>作品集</h1></div><div class="projects">'+cards+'</div>'))
+ write(slug,shell('作品集','<div class="article-heading"><p class="eyebrow">WORK & EXPERIMENTS</p><h1>作品集</h1></div><div class="projects">'+cards+'</div>'))
 # Retain old /index.php/slug paths and WordPress numeric permalinks without a server.
 for p in pages:
  dest='/'+p['slug']+'/' if p['slug']!='home' else '/'
@@ -48,3 +48,49 @@ write('index.php',shell('Leman FENG',hero+'<a class="text-link" href="/">进入�
 (OUT/'404.html').write_text(shell('页面未找到','<div class="article-heading"><p class="eyebrow">404</p><h1>这条路径还没有作品。</h1><p><a class="text-link" href="/">返回首页 ↗</a></p></div>'))
 (OUT/'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#215d50"/><text x="12" y="47" font-family="serif" font-size="45" fill="#f5f5ed">F</text></svg>')
 print('Built',len(list(OUT.rglob('*.html'))),'HTML pages')
+
+# A complete, single-page portfolio. Standalone legacy project pages remain available.
+def carousel(content):
+    slides=[]
+    for image,caption in re.findall(r'\[caption[^\]]*\](<img[^>]+>)\s*(.*?)\[/caption\]',content,re.S):
+        src=re.search(r'src="([^"]+)"',image)[1]
+        # Prefer the full image when the WordPress caption used a thumbnail.
+        name=re.sub(r'-\d+x\d+(?=\.[^.]+$)','',src.split('/')[-1])
+        if not (OUT/'assets'/name).exists():name=src.split('/')[-1]
+        label=html.escape(re.sub('<[^>]+>','',caption).strip())
+        slides.append((name,label))
+    frames=''.join(f'<figure class="slide" {"hidden" if i else ""}><img src="/assets/{name}" alt="光线追踪渲染进展 {label}" loading="lazy" decoding="async"><figcaption>{label}</figcaption></figure>' for i,(name,label) in enumerate(slides))
+    dots=''.join(f'<button type="button" data-slide="{i}" aria-label="查看 {label}" aria-pressed="{str(i==0).lower()}"></button>' for i,(_,label) in enumerate(slides))
+    return f'<div class="slideshow" role="region" aria-roledescription="carousel" aria-label="光线追踪开发进展" tabindex="0">{frames}<div class="slide-controls"><div><button type="button" data-prev aria-label="上一张">←</button><button type="button" data-next aria-label="下一张">→</button><span class="slide-count" aria-live="polite">1 / {len(slides)}</span></div><div class="slide-dots">{dots}</div><button type="button" data-play aria-label="暂停自动播放">暂停 ⏸</button></div></div>'
+
+def inline_project(p):
+    content=p['content']
+    if p['slug']=='ray-tracing':
+        intro=content.split('[caption')[0]
+        return '<div class="project-description">'+clean(intro)+'</div>'+carousel(content)
+    if p['slug']=='visualization':
+        return '<div class="inline-gallery math-gallery">'+clean(content)+'</div>'
+    image_tags=re.findall(r'<img[^>]+>',content)
+    description=re.sub(r'<img[^>]+>','',content)
+    images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags)
+    if p['slug']=='building-modeling':
+        description=description.replace("How it's made:",'')
+        main_images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags[:8])
+        process_images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags[8:])
+        return '<div class="project-description">'+clean(description)+'</div><div class="inline-gallery">'+main_images+'</div><h4 class="process-title">制作过程 / How it’s made</h4><div class="inline-gallery">'+process_images+'</div>'
+    return '<div class="project-description">'+clean(description)+'</div><div class="inline-gallery">'+images+'</div>'
+
+page_by_slug={p['slug']:p for p in pages}
+all_projects=''
+for slug,num,tag,title,sub,img,meta in projects:
+    p=page_by_slug[slug]
+    all_projects+=f'<section class="inline-project" id="{slug}"><div class="inline-heading"><p class="eyebrow">{num} / {tag}</p><h3>{title}</h3><p>{sub}</p></div>'+inline_project(p)+'</section>'
+project_nav='<nav class="project-index" aria-label="项目目录">'+''.join(f'<a href="#{slug}">{title} ↘</a>' for slug,_,_,title,*_ in projects)+'</nav>'
+cv=(ROOT/'content/cv.html').read_text()
+cv_intro='<section id="cv" class="cv-intro"><div><p class="eyebrow">CURRENT INTERESTS & CV · 02</p><h2>具身智能全栈</h2><p>深度学习 · 强化学习 · 闭环仿真<br>计算机图形学 · 工程机械纯 Sim2Real 落地</p></div><div class="cv-intro-links"><a class="text-link" href="/cv/">查看网页版 CV ↗</a><a class="text-link secondary" href="/CV_Leman_FENG_2026_CN.pdf" download>下载 PDF 简历 ↓</a><small>Leman FENG / 冯乐满 · 中文详细版</small></div></section>'
+home_body=hero+cv_intro+'<section id="work"><div class="section-heading"><div><p class="eyebrow">SELECTED WORK · 03</p><h2>一些想法，一些作品。</h2></div><p>所有项目，在这里展开。<br>Graphics, physics & visual experiments.</p></div>'+project_nav+all_projects+'</section>'
+write('',shell('从几何，到智能',home_body))
+for slug in ('cv','about','resume','chinese_resume'):
+    write(slug,shell('个人 CV','<div class="cv-back"><a class="back" href="/">← 首页 / Home</a></div>'+cv))
+ray=page_by_slug['ray-tracing']
+write('ray-tracing',shell(ray['title'],'<div class="article-heading"><a class="back" href="/#ray-tracing">← 返回首页作品</a><p class="eyebrow">RENDERING · C++</p><h1>Ray-tracing 光线追踪</h1></div>'+inline_project(ray)))
