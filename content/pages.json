@@ -1,0 +1,68 @@
+[
+  {
+    "id": "17",
+    "title": "Resume",
+    "slug": "resume",
+    "content": "[rb_resume id=\"13\"]"
+  },
+  {
+    "id": "27",
+    "title": "简历",
+    "slug": "chinese_resume",
+    "content": "[rb_resume id=\"26\"]"
+  },
+  {
+    "id": "31",
+    "title": "Visualization 动图画廊",
+    "slug": "visualization",
+    "content": "欧拉恒等式的解释\r\nEuler's equation\r\n<img class=\"alignnone size-full wp-image-34\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/euler.gif\" alt=\"\" width=\"512\" height=\"384\" />\r\n\r\n傅立叶变换的解释\r\nFourier transform\r\n<img class=\"alignnone size-full wp-image-35\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/fourier.gif\" alt=\"\" width=\"560\" height=\"420\" />\r\n\r\n矩阵的对角化\r\nDiagonalization of matrix\r\n<img class=\"alignnone size-full wp-image-33\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Diagonal.gif\" alt=\"\" width=\"600\" height=\"450\" />\r\n\r\n矩阵奇异值分解\r\nSingular value decomposition\r\n<img class=\"alignnone size-full wp-image-40\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/SVD.gif\" alt=\"\" width=\"450\" height=\"338\" />\r\n\r\n茹科夫斯基变换\r\nJoukowsky transform\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/joukozsky.gif\" alt=\"\" width=\"388\" height=\"288\" class=\"alignnone size-full wp-image-36\" />\r\n\r\n三维应力摩尔圆\r\nMohr's circle in 3D\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/mohr.gif\" alt=\"\" width=\"512\" height=\"384\" class=\"alignnone size-full wp-image-39\" />\r\n\r\n水跃的模拟 软件Algodoo\r\nHydraulic jump (Software: Algodoo)\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/water1.gif\" alt=\"\" width=\"562\" height=\"509\" class=\"alignnone size-full wp-image-41\" />\r\n\r\n文丘里管\r\nVenturi tube\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/water2.gif\" alt=\"\" width=\"562\" height=\"509\" class=\"alignnone size-full wp-image-51\" />\r\n\r\n沿程水头损失\r\nFrictional head loss\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/water3.gif\" alt=\"\" width=\"562\" height=\"509\" class=\"alignnone size-full wp-image-52\" />\r\n\r\n层流\r\nLaminar flow\r\n<img src=\"http://lemanfeng.com/wp-content/uploads/2017/07/water4.gif\" alt=\"\" width=\"550\" height=\"504\" class=\"alignnone size-full wp-image-53\" />\r\n\r\n"
+  },
+  {
+    "id": "55",
+    "title": "Projects 项目",
+    "slug": "projects",
+    "content": ""
+  },
+  {
+    "id": "57",
+    "title": "High-order Mesh 高阶网格生成",
+    "slug": "high-order-mesh",
+    "content": "SIGGRAPH 2018 <a href=\"http://www.geometry.caltech.edu/pubs/FABDD18.pdf\">高阶德劳内三角化 Curved Optimal Delaunay Triangulation</a>, LEMAN FENG et al.\n\nProject in INRIA and Caltech CMS\n\n<img class=\"alignnone size-full wp-image-64\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/untangling.gif\" alt=\"\" width=\"828\" height=\"493\" />\n<img class=\"alignnone size-full wp-image-65\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/flip_simulation_global.gif\" alt=\"\" width=\"379\" height=\"379\" />\n<img class=\"alignnone size-full wp-image-66\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/flip.gif\" alt=\"\" width=\"516\" height=\"389\" />\n<img class=\"alignnone size-full wp-image-61\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/jellyfish.gif\" alt=\"\" width=\"563\" height=\"493\" />\n<img class=\"alignnone size-full wp-image-62\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/circle.gif\" alt=\"\" width=\"422\" height=\"400\" />"
+  },
+  {
+    "id": "68",
+    "title": "2D Physics Sandbox 物理沙盒",
+    "slug": "2d-physics-sandbox",
+    "content": "物理沙盒，C++课程大作业 / My 2D Physics Sandbox, a project for C++ course in ENPC.\r\nGithub: <a href=\"https://github.com/flm8620/RigidBody\">https://github.com/flm8620/RigidBody</a>\r\nPart of code is based on Box2D\r\nHow does it look like:\r\n蓝线表示碰撞求解，红线表示力求解\r\nBlue vectors indicate collision solver, red vectors indicates contact solver\r\n<img class=\"alignnone size-full wp-image-32\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/angrybird.gif\" alt=\"\" width=\"300\" height=\"300\" />\r\n<img class=\"alignnone size-full wp-image-173\" src=\"http://lemanfeng.com/wp-content/uploads/2017/08/angrybird2.gif\" alt=\"\" width=\"786\" height=\"787\" />"
+  },
+  {
+    "id": "77",
+    "title": "Calib3DTools Software",
+    "slug": "calib3dtools-software",
+    "content": "Software created during internship in <a href=\"http://imagine.enpc.fr/\">IMAGINE </a>lab\r\n<a href=\"http://imagine.enpc.fr/\">IMAGINE</a>实验室实习成果 图像处理软件 Calib3DTools\r\nMore details in Github: <a href=\"https://github.com/flm8620/Calib3DTools\">https://github.com/flm8620/Calib3DTools</a>\r\n<img class=\"alignnone size-full wp-image-78\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/calib1.png\" alt=\"\" width=\"1087\" height=\"725\" />\r\n\r\n<img class=\"alignnone size-full wp-image-79\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/calib2.png\" alt=\"\" width=\"1087\" height=\"725\" />\r\n\r\n<img class=\"alignnone size-full wp-image-80\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/calib3.png\" alt=\"\" width=\"1231\" height=\"851\" />"
+  },
+  {
+    "id": "83",
+    "title": "Ray-tracing 光线追踪",
+    "slug": "ray-tracing",
+    "content": "Handmade Ray-tracing Program\r\n光线追踪小程序\r\nGithub: <a href=\"https://github.com/flm8620/ray-tracing\">https://github.com/flm8620/ray-tracing</a>\r\n\r\n[caption id=\"attachment_85\" align=\"alignnone\" width=\"150\"]<img class=\"size-thumbnail wp-image-85\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day1-150x150.png\" alt=\"\" width=\"150\" height=\"150\" /> Day 1[/caption]\r\n\r\n[caption id=\"attachment_86\" align=\"alignnone\" width=\"300\"]<img class=\"size-medium wp-image-86\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day2-300x240.png\" alt=\"\" width=\"300\" height=\"240\" /> Day2[/caption]\r\n\r\n[caption id=\"attachment_88\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-88\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day3.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day3[/caption]\r\n\r\n[caption id=\"attachment_87\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-87\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day3.5.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day3.5[/caption]\r\n\r\n[caption id=\"attachment_89\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-89\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day4.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day4[/caption]\r\n\r\n[caption id=\"attachment_90\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-90\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day5.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day5[/caption]\r\n\r\n[caption id=\"attachment_91\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-91\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day6.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day6[/caption]\r\n\r\n[caption id=\"attachment_93\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-93\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day7.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day7[/caption]\r\n\r\n[caption id=\"attachment_92\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-92\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day7.5.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day7.5[/caption]\r\n\r\n[caption id=\"attachment_97\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-97\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day8.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day8[/caption]\r\n\r\n[caption id=\"attachment_94\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-94\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day8.1.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day8.1[/caption]\r\n\r\n[caption id=\"attachment_95\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-95\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day8.2.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day8.2[/caption]\r\n\r\n[caption id=\"attachment_96\" align=\"alignnone\" width=\"1000\"]<img class=\"size-full wp-image-96\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day8.3.png\" alt=\"\" width=\"1000\" height=\"800\" /> Day8.3[/caption]"
+  },
+  {
+    "id": "103",
+    "title": "Building Modeling 教学楼建模",
+    "slug": "building-modeling",
+    "content": "Surveying and 3D computer modeling of a building on campus, put in game Counter-Strike\r\nMedia report : <a href=\"http://xian.qq.com/a/20120718/000073.htm\">http://xian.qq.com/a/20120718/000073.htm</a>\r\n\r\n<img class=\"alignnone size-full wp-image-122\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building1.jpg\" alt=\"\" width=\"580\" height=\"435\" /><img class=\"alignnone size-full wp-image-123\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building1r.jpg\" alt=\"\" width=\"580\" height=\"435\" />\r\n<img class=\"alignnone size-medium wp-image-124\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building2-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-125\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building2r-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" />\r\n<img class=\"alignnone size-medium wp-image-128\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building4-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-129\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building4r-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" />\r\n<img class=\"alignnone size-medium wp-image-130\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building5-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-131\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building6-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" />\r\n\r\nHow it's made:\r\n<img class=\"alignnone size-medium wp-image-138\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/mesure-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" /><img class=\"alignnone size-medium wp-image-133\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/draft1-225x300.jpg\" alt=\"\" width=\"225\" height=\"300\" />\r\n\r\n<img class=\"alignnone size-medium wp-image-132\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/cad-204x300.jpg\" alt=\"\" width=\"204\" height=\"300\" />"
+  },
+  {
+    "id": "156",
+    "title": "Home",
+    "slug": "home",
+    "content": "<strong><a href=\"http://lemanfeng.com/index.php/chinese_resume/\">中文简历</a></strong>\r\n\r\n<strong><a href=\"http://lemanfeng.com/index.php/resume/\">Resume</a></strong>\r\n\r\n<strong><a href=\"http://lemanfeng.com/index.php/works/\">Interesting Works 一些作品</a></strong>"
+  },
+  {
+    "id": "158",
+    "title": "Works 作品",
+    "slug": "works",
+    "content": "<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/visualization/\">Visualization 动图画廊</a> &lt;&lt; click for more</h3>\r\n<p style=\"text-align: center;\"><img class=\"wp-image-36 size-full aligncenter\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/joukozsky.gif\" alt=\"\" width=\"388\" height=\"288\" /></p>\r\n\r\n<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/2d-physics-sandbox/\">2D Physics Sandbox 物理沙盒</a> &lt;&lt; click for more</h3>\r\n<p style=\"text-align: center;\"><img class=\"alignnone size-full wp-image-173\" src=\"http://lemanfeng.com/wp-content/uploads/2017/08/angrybird2.gif\" alt=\"\" width=\"786\" height=\"787\" /></p>\r\n\r\n<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/ray-tracing/\">Ray-tracing 光线追踪</a> &lt;&lt; click for more</h3>\r\n[caption id=\"attachment_91\" align=\"aligncenter\" width=\"300\"]<img class=\"wp-image-91 size-medium\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/Day6-300x240.png\" alt=\"\" width=\"300\" height=\"240\" /> Day6[/caption]\r\n<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/building-modeling/\">Building Modeling 教学楼建模</a> &lt;&lt; click for more</h3>\r\n<p style=\"text-align: center;\"><img class=\"alignnone wp-image-122 size-medium\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/building1-300x225.jpg\" alt=\"\" width=\"300\" height=\"225\" /></p>\r\n\r\n<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/calib3dtools-software/\">Calib3DTools Software</a> &lt;&lt; click for more</h3>\r\n<p style=\"text-align: center;\"><img class=\"alignnone wp-image-80 size-medium\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/calib3-300x207.png\" alt=\"\" width=\"300\" height=\"207\" /></p>\r\n\r\n<h3 class=\"entry-title\" style=\"text-align: center;\"><a href=\"http://lemanfeng.com/index.php/high-order-mesh/\">High-order Mesh 高阶网格生成</a> &lt;&lt; click for more</h3>\r\n<img class=\"alignnone wp-image-65 size-full aligncenter\" src=\"http://lemanfeng.com/wp-content/uploads/2017/07/flip_simulation_global.gif\" alt=\"\" width=\"379\" height=\"379\" />"
+  }
+]
