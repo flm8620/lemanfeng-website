@@ -1,10 +1,12 @@
 from pathlib import Path
-import json,re,html
+import json,re,html,hashlib
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'dist';OUT.mkdir(exist_ok=True)
 pages=json.loads((ROOT/'content/pages.json').read_text())
+asset_version=hashlib.sha256((OUT/'style.css').read_bytes()).hexdigest()[:12]
+script_version=hashlib.sha256((OUT/'slideshow.js').read_bytes()).hexdigest()[:12]
 nav='<a class="brand" href="/">Leman FENG<span>冯乐满</span></a><nav aria-label="主导航"><a href="/#cv">个人 CV</a><a href="/#work">作品 / Work</a><a href="/#visualization">动图 / Visuals</a><a href="https://github.com/flm8620">GitHub ↗</a></nav>'
 def shell(title,body,desc='Leman FENG — embodied intelligence, computer graphics, simulation and selected projects.'):
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · Leman FENG</title><meta name="description" content="{html.escape(desc)}"><meta name="theme-color" content="#f5f5ed"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><script src="/slideshow.js" defer></script></head><body><a class="skip" href="#main">跳至内容</a><header>{nav}</header><main id="main">{body}</main><footer><span>© Leman FENG</span><span>Ideas made visible. 想法，化为可见。</span><a href="https://github.com/flm8620">GitHub ↗</a></footer></body></html>'''
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · Leman FENG</title><meta name="description" content="{html.escape(desc)}"><meta name="theme-color" content="#f5f5ed"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v={asset_version}"><script src="/slideshow.js?v={script_version}" defer></script></head><body><a class="skip" href="#main">跳至内容</a><header>{nav}</header><main id="main">{body}</main><footer><span>© Leman FENG</span><span>Ideas made visible. 想法，化为可见。</span><a href="https://github.com/flm8620">GitHub ↗</a></footer></body></html>'''
 def write(route,text):
  p=OUT/route/'index.html';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 projects=[
