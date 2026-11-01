@@ -1,6 +1,6 @@
 # Leman FENG — personal website
 
-Private source repository for the public personal site formerly hosted on WordPress at lemanfeng.com.
+Public source repository for the personal site formerly hosted on WordPress at lemanfeng.com.
 
 ## Maintenance
 
@@ -12,7 +12,9 @@ Private source repository for the public personal site formerly hosted on WordPr
 
 ## Hosting
 
-The site is published with Sites; the project identity is in `.openai/hosting.json`. GitHub is private source storage. GitHub Pages is not enabled because the current GitHub plan does not support Pages from private repositories. Changes in this repository do **not** automatically deploy: the maintainer must synchronize the source to the Sites repository and publish a matching saved version with the Sites workflow. Keep both sources consistent after changes.
+The production target is GitHub Pages. `.github/workflows/pages.yml` builds and publishes `dist/` on every push to `main`. `scripts/pages-paths.py` adjusts links for the project URL and automatically uses root paths when a custom domain is configured. No deployment credentials need to be stored in the repository.
+
+The earlier Sites deployment remains available during migration. `.openai/hosting.json` records that existing deployment's identity; its project ID is not a credential. GitHub Pages is the automatic publishing workflow going forward.
 
 ## Migration
 
