@@ -4,8 +4,10 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'dist';OUT.mkdir(exist_ok=True
 pages=json.loads((ROOT/'content/pages.json').read_text())
 asset_version=hashlib.sha256((OUT/'style.css').read_bytes()).hexdigest()[:12]
 script_version=hashlib.sha256((OUT/'slideshow.js').read_bytes()).hexdigest()[:12]
+pdf_version=hashlib.sha256((OUT/'CV_Leman_FENG_2026_CN.pdf').read_bytes()).hexdigest()[:12]
 nav='<a class="brand" href="/">Leman FENG<span>冯乐满</span></a><nav aria-label="主导航"><a href="/#cv">个人 CV</a><a href="/#work">作品 / Work</a><a href="/#visualization">动图 / Visuals</a><a href="https://github.com/flm8620">GitHub ↗</a></nav>'
 def shell(title,body,desc='Leman FENG — embodied intelligence, computer graphics, simulation and selected projects.'):
+ body=body.replace('href="/CV_Leman_FENG_2026_CN.pdf"',f'href="/CV_Leman_FENG_2026_CN.pdf?v={pdf_version}"')
  return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · Leman FENG</title><meta name="description" content="{html.escape(desc)}"><meta name="theme-color" content="#f5f5ed"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css?v={asset_version}"><script src="/slideshow.js?v={script_version}" defer></script></head><body><a class="skip" href="#main">跳至内容</a><header>{nav}</header><main id="main">{body}</main><footer><span>© Leman FENG</span><span>Ideas made visible. 想法，化为可见。</span><a href="https://github.com/flm8620">GitHub ↗</a></footer></body></html>'''
 def write(route,text):
  p=OUT/route/'index.html';p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
@@ -65,17 +67,21 @@ def carousel(content):
     dots=''.join(f'<button type="button" data-slide="{i}" aria-label="查看 {label}" aria-pressed="{str(i==0).lower()}"></button>' for i,(_,label) in enumerate(slides))
     return f'<div class="slideshow" role="region" aria-roledescription="carousel" aria-label="光线追踪开发进展" tabindex="0">{frames}<div class="slide-controls"><div><button type="button" data-prev aria-label="上一张">←</button><button type="button" data-next aria-label="下一张">→</button><span class="slide-count" aria-live="polite">1 / {len(slides)}</span></div><div class="slide-dots">{dots}</div><button type="button" data-play aria-label="暂停自动播放">暂停 ⏸</button></div></div>'
 
-def inline_project(p):
+def inline_project(p,preview=False):
     content=p['content']
     if p['slug']=='ray-tracing':
         intro=content.split('[caption')[0]
         return '<div class="project-description">'+clean(intro)+'</div>'+carousel(content)
     if p['slug']=='visualization':
+        blocks=re.split(r'\n\s*\n',content.strip())
+        if preview: content='\n\n'.join(blocks[:2])
         return '<div class="inline-gallery math-gallery">'+clean(content)+'</div>'
     image_tags=re.findall(r'<img[^>]+>',content)
+    if preview: image_tags=image_tags[:2]
     description=re.sub(r'<img[^>]+>','',content)
+    if preview: description=description.replace("How it's made:",'')
     images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags)
-    if p['slug']=='building-modeling':
+    if p['slug']=='building-modeling' and not preview:
         description=description.replace("How it's made:",'')
         main_images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags[:8])
         process_images=''.join('<figure>'+clean(tag)+'</figure>' for tag in image_tags[8:])
@@ -86,11 +92,11 @@ page_by_slug={p['slug']:p for p in pages}
 all_projects=''
 for slug,num,tag,title,sub,img,meta in projects:
     p=page_by_slug[slug]
-    all_projects+=f'<section class="inline-project" id="{slug}"><div class="inline-heading"><p class="eyebrow">{num} / {tag}</p><h3>{title}</h3><p>{sub}</p></div>'+inline_project(p)+'</section>'
+    all_projects+=f'<section class="inline-project" id="{slug}"><div class="inline-heading"><p class="eyebrow">{num} / {tag}</p><h3>{title}</h3><p>{sub}</p></div>'+inline_project(p,preview=True)+f'<a class="text-link" href="/{slug}/">查看完整项目 ↗</a></section>'
 project_nav='<nav class="project-index" aria-label="项目目录">'+''.join(f'<a href="#{slug}">{title} ↘</a>' for slug,_,_,title,*_ in projects)+'</nav>'
 cv=(ROOT/'content/cv.html').read_text()
 cv_intro='<section id="cv" class="cv-intro"><div><p class="eyebrow">CURRENT INTERESTS & CV · 02</p><h2>具身智能全栈</h2><p>深度学习 · 强化学习 · 闭环仿真<br>计算机图形学 · 工程机械纯 Sim2Real 落地</p></div><div class="cv-intro-links"><a class="text-link" href="/cv/">查看网页版 CV ↗</a><a class="text-link secondary" href="/CV_Leman_FENG_2026_CN.pdf" download>下载 PDF 简历 ↓</a><small>Leman FENG / 冯乐满 · 中文详细版</small></div></section>'
-home_body=hero+cv_intro+'<section id="work"><div class="section-heading"><div><p class="eyebrow">SELECTED WORK · 03</p><h2>一些想法，一些作品。</h2></div><p>所有项目，在这里展开。<br>Graphics, physics & visual experiments.</p></div>'+project_nav+all_projects+'</section>'
+home_body=hero+cv_intro+'<section id="work"><div class="section-heading"><div><p class="eyebrow">SELECTED WORK · 03</p><h2>一些想法，一些作品。</h2></div><p>精选预览，点击查看完整项目。<br>Graphics, physics & visual experiments.</p></div>'+project_nav+all_projects+'</section>'
 write('',shell('从几何，到智能',home_body))
 for slug in ('cv','about','resume','chinese_resume'):
     write(slug,shell('个人 CV','<div class="cv-back"><a class="back" href="/">← 首页 / Home</a></div>'+cv))

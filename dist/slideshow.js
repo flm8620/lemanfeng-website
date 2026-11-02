@@ -10,7 +10,7 @@ document.querySelectorAll('.slideshow').forEach(root=>{
     play.textContent=playing?'暂停 ⏸':'播放 ▶';
     play.setAttribute('aria-label',playing?'暂停自动播放':'开始自动播放');
   }
-  function schedule(){clearInterval(timer);timer=null;if(playing&&inView&&!hovered&&!focused&&!document.hidden)timer=setInterval(()=>{index=(index+1)%slides.length;render()},3500)}
+  function schedule(){clearInterval(timer);timer=null;if(playing&&inView&&!hovered&&!focused&&!document.hidden)timer=setInterval(()=>{index=(index+1)%slides.length;render()},2000)}
   function go(i){index=(i+slides.length)%slides.length;render();schedule()}
   root.querySelector('[data-prev]').addEventListener('click',()=>go(index-1));
   root.querySelector('[data-next]').addEventListener('click',()=>go(index+1));
