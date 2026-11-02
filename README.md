@@ -23,3 +23,7 @@ The earlier Sites deployment remains available during migration. `.openai/hostin
 Source: UpdraftPlus backup dated 2021-07-05 in the owner's Google Drive. The published project pages and all 47 referenced images/GIFs were preserved, with full-resolution Day 1 and Day 2 images added for the slideshow. Legacy `/index.php/<slug>/` paths redirect to their static equivalents. The homepage shows all projects inline. The old Resume Builder plugin pages now lead to the photo-free web CV, and a compiled PDF download is also published at the owner’s request. Original WordPress drafts, revisions, user records, password hashes, SQL backups and server configuration are excluded.
 
 `lemanfeng.com` and `www.lemanfeng.com` DNS point to GitHub Pages. After changing the custom domain in Pages settings, run the publishing workflow again so its configured base path is reflected in all links and assets. Enable Enforce HTTPS after certificate provisioning completes.
+
+## Paper demonstration video
+
+The CODT project uses `dist/assets/codt-3d-bimba.mp4`, a web-optimized copy of `TheMakingOfBimba.mp4` from the authors’ supplementary archive at https://geometry.caltech.edu/pubs/FABDD18_supp.zip (paper DOI: https://doi.org/10.1145/3197517.3201358). The complete 39-second video retains its audio and is encoded as H.264/AAC with fast-start metadata for browser playback. Its companion homepage item is the original `untangling.gif`.

@@ -67,14 +67,19 @@ def carousel(content):
     dots=''.join(f'<button type="button" data-slide="{i}" aria-label="查看 {label}" aria-pressed="{str(i==0).lower()}"></button>' for i,(_,label) in enumerate(slides))
     return f'<div class="slideshow" role="region" aria-roledescription="carousel" aria-label="光线追踪开发进展" tabindex="0">{frames}<div class="slide-controls"><div><button type="button" data-prev aria-label="上一张">←</button><button type="button" data-next aria-label="下一张">→</button><span class="slide-count" aria-live="polite">1 / {len(slides)}</span></div><div class="slide-dots">{dots}</div><button type="button" data-play aria-label="暂停自动播放">暂停 ⏸</button></div></div>'
 
+def codt_media():
+    return '<div class="inline-gallery codt-media"><figure><video controls autoplay muted loop playsinline preload="metadata" poster="/assets/codt-3d-bimba-poster.jpg" aria-label="三维人头像高阶网格生成演示"><source src="/assets/codt-3d-bimba.mp4" type="video/mp4">您的浏览器不支持内嵌视频。<a href="/assets/codt-3d-bimba.mp4">下载演示视频</a></video><figcaption>三维高阶网格 · The Making of Bimba</figcaption></figure><figure><img src="/assets/untangling.gif" alt="二维高阶网格解缠与优化动画" loading="lazy" decoding="async"><figcaption>二维高阶网格 · Untangling</figcaption></figure></div>'
+
 def inline_project(p,preview=False):
     content=p['content']
+    if p['slug']=='high-order-mesh' and preview:
+        return '<div class="project-description"><p>SIGGRAPH 2018 · <a href="https://dl.acm.org/doi/10.1145/3197517.3201358">Curved Optimal Delaunay Triangulation</a> · Leman FENG et al.</p><p>INRIA × Caltech · 高阶网格的几何与拓扑优化</p></div>'+codt_media()
     if p['slug']=='ray-tracing':
         intro=content.split('[caption')[0]
         return '<div class="project-description">'+clean(intro)+'</div>'+carousel(content)
     if p['slug']=='visualization':
         blocks=re.split(r'\n\s*\n',content.strip())
-        if preview: content='\n\n'.join(blocks[:2])
+        if preview: content='\n\n'.join(blocks[:4])
         return '<div class="inline-gallery math-gallery">'+clean(content)+'</div>'
     image_tags=re.findall(r'<img[^>]+>',content)
     if preview: image_tags=image_tags[:2]
@@ -102,3 +107,6 @@ for slug in ('cv','about','resume','chinese_resume'):
     write(slug,shell('个人 CV','<div class="cv-back"><a class="back" href="/">← 首页 / Home</a></div>'+cv))
 ray=page_by_slug['ray-tracing']
 write('ray-tracing',shell(ray['title'],'<div class="article-heading"><a class="back" href="/#ray-tracing">← 返回首页作品</a><p class="eyebrow">RENDERING · C++</p><h1>Ray-tracing 光线追踪</h1></div>'+inline_project(ray)))
+
+mesh=page_by_slug['high-order-mesh']
+write('high-order-mesh',shell(mesh['title'],'<div class="article-heading"><a class="back" href="/#high-order-mesh">← 返回首页作品</a><p class="eyebrow">GEOMETRY · RESEARCH</p><h1>High-order Mesh 高阶网格生成</h1></div>'+codt_media()+'<article class="archive">'+clean(mesh['content'])+'</article>'))
