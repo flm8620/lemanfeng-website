@@ -14,7 +14,7 @@ Public source repository for the personal site formerly hosted on WordPress at l
 
 ## Hosting
 
-The production target is GitHub Pages. `.github/workflows/pages.yml` builds and publishes `dist/` on every push to `main`. `scripts/pages-paths.py` adjusts links for the project URL and automatically uses root paths when a custom domain is configured. No deployment credentials need to be stored in the repository.
+The production URL is https://lemanfeng.com/ and the site is hosted by GitHub Pages. `.github/workflows/pages.yml` builds and publishes `dist/` on every push to `main`. `scripts/pages-paths.py` adjusts links for the project URL and automatically uses root paths when a custom domain is configured. No deployment credentials need to be stored in the repository.
 
 The earlier Sites deployment remains available during migration. `.openai/hosting.json` records that existing deployment's identity; its project ID is not a credential. GitHub Pages is the automatic publishing workflow going forward.
 
@@ -22,4 +22,4 @@ The earlier Sites deployment remains available during migration. `.openai/hostin
 
 Source: UpdraftPlus backup dated 2021-07-05 in the owner's Google Drive. The published project pages and all 47 referenced images/GIFs were preserved, with full-resolution Day 1 and Day 2 images added for the slideshow. Legacy `/index.php/<slug>/` paths redirect to their static equivalents. The homepage shows all projects inline. The old Resume Builder plugin pages now lead to the photo-free web CV, and a compiled PDF download is also published at the owner’s request. Original WordPress drafts, revisions, user records, password hashes, SQL backups and server configuration are excluded.
 
-`lemanfeng.com` DNS has not yet been switched. Custom-domain configuration is a separate step after the public site is verified.
+`lemanfeng.com` and `www.lemanfeng.com` DNS point to GitHub Pages. After changing the custom domain in Pages settings, run the publishing workflow again so its configured base path is reflected in all links and assets. Enable Enforce HTTPS after certificate provisioning completes.
